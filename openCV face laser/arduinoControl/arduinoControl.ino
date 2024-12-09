@@ -4,14 +4,15 @@ String inputString;
 Servo left_right;
 Servo up_down;
 
+const int left_right_pin = 2;
+const int up_down_pin = 3;
 
 void setup()
 {
-  left_right.attach(2);
-  up_down.attach(3);
+  left_right.attach(left_right_pin); // attach servo to pin 2
+  up_down.attach(up_down_pin); // attach servo to pin 3
   Serial.begin(9600);
 }
-
 
 void loop()
 {
@@ -28,8 +29,6 @@ void loop()
     left_right.write(x);
     up_down.write(y);
     
-    
-
     // Print the parsed values
     Serial.print("First Integer: ");
     Serial.println(x);

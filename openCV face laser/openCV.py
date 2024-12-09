@@ -3,7 +3,8 @@ import time
 import numpy as np
 import cv2
 
-arduinoData = serial.Serial('COM4', 9600) #Change the COM port to the one that your Arduino is connected to
+#arduinoData = serial.Serial('COM4', 9600) #Change the COM port to the one that your Arduino is connected to
+arduinoData = serial.Serial() #Change the COM port to the one that your Arduino is connected to
 
 def send_coordinates_to_arduino(x, y, w, h):
     # Convert the coordinates to a string and send it to Arduino
@@ -11,8 +12,9 @@ def send_coordinates_to_arduino(x, y, w, h):
     arduinoData.write(coordinates.encode())
     print(f"X{x}Y{y}\n")
 
-capture = cv2.VideoCapture(0) #Change the number for the camera that you are using, 0 is for the internal laptop camera, 1 is for an external webcam
+capture = cv2.VideoCapture(1) # Change the number for the camera that you are using, 0 is for the internal laptop camera, 1 is for an external webcam
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+time.sleep(5)
 
 while True:
     isTrue, frame = capture.read()
