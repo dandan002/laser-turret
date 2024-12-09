@@ -5,13 +5,13 @@ Servo panServo;
 Servo tiltServo;
 
 // TEST VARS
-int tiltWrite = 270;
-int panWrite = 180;
+int panWrite = 0;
+int tiltWrite = 180;
 
 void setup() {
   // setup servos
   panServo.attach(12); // 180 = Forward
-  tiltServo.attach(13); // 270 = Forward, 90 = Up, 360 = Down
+  tiltServo.attach(13); // 180 = Forward, 90 = Up, 360 = Down
 }
 
 void loop() {

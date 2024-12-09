@@ -3,7 +3,7 @@ import time
 import numpy as np
 import cv2
 
-arduinoData = serial.Serial('/dev/cu.usbserial-110', 9600) #Change this based on your serial port
+arduinoData = serial.Serial('COM4', 9600) #Change the COM port to the one that your Arduino is connected to
 
 def send_coordinates_to_arduino(x, y, w, h):
     # Convert the coordinates to a string and send it to Arduino

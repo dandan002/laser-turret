@@ -7,8 +7,8 @@ Servo up_down;
 
 void setup()
 {
-  left_right.attach(12);
-  up_down.attach(13);
+  left_right.attach(2);
+  up_down.attach(3);
   Serial.begin(9600);
 }
 
