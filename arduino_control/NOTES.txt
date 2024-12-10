@@ -1,11 +1,19 @@
 Goal: Track an object with Pixy and have a pan/tilt mount + car 
-it's mounted on follow a target.
+it's mounted on follow a target through an arduino.
 
 Servos:
-Pan (Pin 9/Orange): Center = 100, Left = 10, right = 200
+Pan (Pin 9/Orange): Center = 100, right = 10, left = 200
 Tilt (Pin 10/White): Center = 180, up = 90, down = N/A
 
 Steering/Motor:
-Motor (Pin 12)
-Steering Servo (Pin 11)
+Motor (Pin 11)
+Steering Servo (Pin 12)
 
+Laser:
+Laser (Pin 13)
+
+Use block-based following: If object in the left third of the screen, 
+move turret left at a slow, constant speed. If in the right third,
+move right at a slow, constant speed. If in top third, etc.
+
+To debug, output all movements to serial.

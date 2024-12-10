@@ -9,15 +9,22 @@ Servo steeringServo;
 
 const int panPin = 9;
 const int tiltPin = 10;
-const int motorPin = 12;
-const int steeringPin = 11;
+const int motorPin = 11;
+const int steeringPin = 12;
+const int laserPin = 13;
 
 const int panCenter = 100;
-const int panLeft = 10;
-const int panRight = 200;
+const int panRight = 10;
+const int panLeft = 200;
 
 const int tiltCenter = 180;
 const int tiltUp = 90;
+
+const int steerCenter = 90;
+const int steerLeft = 10;
+const int steerRight = 170;
+
+const int moveSpeed = 1;
 
 void setup() {
   Serial.begin(9600);
@@ -26,11 +33,12 @@ void setup() {
   panServo.attach(panPin);
   tiltServo.attach(tiltPin);
   steeringServo.attach(steeringPin);
-  
   pinMode(motorPin, OUTPUT);
+  pinMode(laserPin, OUTPUT);
   
   panServo.write(panCenter);
   tiltServo.write(tiltCenter);
+  steeringServo.write(steerCenter);
 }
 
 void loop() {
@@ -40,18 +48,26 @@ void loop() {
     int x = pixy.ccc.blocks[0].m_x;
     int y = pixy.ccc.blocks[0].m_y;
     
-    int panPosition = map(x, 0, 319, panLeft, panRight);
-    int tiltPosition = map(y, 0, 199, tiltUp, tiltCenter);
+    int frameWidth = pixy.frameWidth;
+    int frameHeight = pixy.frameHeight;
     
-    panServo.write(panPosition/5);
-    tiltServo.write(tiltPosition/5);
+    if (x < frameWidth / 3) {
+      panServo.write(panServo.read() + moveSpeed);
+      steeringServo.write(steeringServo.read() - moveSpeed);
+      Serial.println("Moving left");
+    } else if (x > 2 * frameWidth / 3) {
+      panServo.write(panServo.read() - moveSpeed);
+      steeringServo.write(steeringServo.read() + moveSpeed);
+      Serial.println("Moving right");
+    }
     
-    int steeringPosition = map(x, 0, 319, panLeft, panRight);
-    steeringServo.write(steeringPosition);
-    
-    digitalWrite(motorPin, HIGH); // Move forward
-  } else {
-    digitalWrite(motorPin, LOW); // Stop
+    if (y < frameHeight / 3) {
+      tiltServo.write(tiltServo.read() - moveSpeed);
+      Serial.println("Moving up");
+    } else if (y > 2 * frameHeight / 3) {
+      tiltServo.write(tiltServo.read() + moveSpeed);
+      Serial.println("Moving down");
+    }
   }
   
   delay(20);
