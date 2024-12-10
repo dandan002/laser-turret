@@ -262,6 +262,7 @@
       <Data key="09a23e5d-3c9a-4343-8a9d-a6aae5b9a76e" value="DEBUG_2" />
       <Data key="015cff70-106b-43ac-bfac-e4d71be7c309" value="RAW_VIDEO" />
       <Data key="20f05f11-2fae-4302-8131-45ed53a3724c" value="SERVO" />
+      <Data key="23e5e7f5-f5b6-4c3d-ae07-5e20eaccba6a" value="ARDUINO" />
       <Data key="24f2714f-f777-40c9-8f25-07b20aaab61e" value="DEBUG_3" />
       <Data key="280e2ccb-6f4f-4330-98b2-ef4809bfe7f9" value="DEBUG_4" />
       <Data key="4897d41d-ed1d-43d5-b104-e63c142aeecc" value="DEBUG_7" />
@@ -3395,7 +3396,7 @@
     </Group>
     <Group key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba">
       <Group key="0">
-        <Data key="Port Format" value="3,4" />
+        <Data key="Port Format" value="4,6" />
       </Group>
     </Group>
     <Group key="09a23e5d-3c9a-4343-8a9d-a6aae5b9a76e">
@@ -3411,6 +3412,11 @@
     <Group key="20f05f11-2fae-4302-8131-45ed53a3724c">
       <Group key="0">
         <Data key="Port Format" value="4,7" />
+      </Group>
+    </Group>
+    <Group key="23e5e7f5-f5b6-4c3d-ae07-5e20eaccba6a">
+      <Group key="0">
+        <Data key="Port Format" value="4,2" />
       </Group>
     </Group>
     <Group key="24f2714f-f777-40c9-8f25-07b20aaab61e">
@@ -3465,7 +3471,7 @@
     </Group>
     <Group key="e851a3b9-efb8-48be-bbb8-b303b216c393">
       <Group key="0">
-        <Data key="Port Format" value="0,1" />
+        <Data key="Port Format" value="4,4" />
       </Group>
     </Group>
     <Group key="ed092b9b-d398-4703-be89-cebf998501f6">
@@ -3481,6 +3487,7 @@
         <Data key="0" value="133748984159688105" />
       </Group>
     </Group>
+    <Group key="Unlocked Pins" />
   </Group>
   <Group key="PlaceDir">
     <Data key="count" value="0" />
