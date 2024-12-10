@@ -24,7 +24,10 @@ const int steerCenter = 90;
 const int steerLeft = 10;
 const int steerRight = 170;
 
-const int moveSpeed = 1;
+const int centerWidth = pixy.frameWidth/2;
+const int centerHeight = pixy.frameHeight/2;
+
+int moveSpeed = 1;
 
 void setup() {
   Serial.begin(9600);
@@ -50,6 +53,15 @@ void loop() {
     
     int frameWidth = pixy.frameWidth;
     int frameHeight = pixy.frameHeight;
+
+    int xDiff = abs(x - centerWidth);
+    int yDiff = abs(y - centerHeight);
+
+    if (xDiff > 130 || yDiff > 100) {
+      moveSpeed = 3;
+    } else if (xDiff > 100 || yDiff > 80) {
+      moveSpeed = 1;
+    }
     
     if (x < frameWidth / 3) {
       panServo.write(panServo.read() + moveSpeed);
