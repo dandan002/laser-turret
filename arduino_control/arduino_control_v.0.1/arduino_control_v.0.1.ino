@@ -80,6 +80,8 @@ void loop() {
       tiltServo.write(tiltServo.read() + moveSpeed);
       Serial.println("Moving down");
     }
+
+    analogWrite(motorPin, 1500);
   }
   
   delay(20);
