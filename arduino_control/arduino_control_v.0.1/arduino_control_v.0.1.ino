@@ -9,9 +9,9 @@ Servo steeringServo;
 
 const int panPin = 9;
 const int tiltPin = 10;
-const int motorPin = 11;
-const int steeringPin = 12;
-const int laserPin = 13;
+const int motorPin = 3;
+const int steeringPin = 5;
+const int laserPin = 6;
 
 const int panCenter = 100;
 const int panRight = 10;
@@ -21,8 +21,8 @@ const int tiltCenter = 180;
 const int tiltUp = 90;
 
 const int steerCenter = 90;
-const int steerLeft = 10;
-const int steerRight = 170;
+const int steerLeft = 5;
+const int steerRight = 175;
 
 const int centerWidth = pixy.frameWidth / 2;
 const int centerHeight = pixy.frameHeight / 2;
@@ -103,9 +103,9 @@ void loop() {
 
     // motor control
     if (blockWidth < (0.1 * frameWidth)) {
-      analogWrite(motorPin, 60);
+      analogWrite(motorPin, 70);
     } else if (blockWidth < (0.2 * frameWidth)) {
-      analogWrite(motorPin, 40);
+      analogWrite(motorPin, 50);
     } else {
       analogWrite(motorPin, 0);
     }
