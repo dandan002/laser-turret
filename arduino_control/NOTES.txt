@@ -1,0 +1,11 @@
+Goal: Track an object with Pixy and have a pan/tilt mount + car 
+it's mounted on follow a target.
+
+Servos:
+Pan (Pin 9/Orange): Center = 100, Left = 10, right = 200
+Tilt (Pin 10/White): Center = 180, up = 90, down = N/A
+
+Steering/Motor:
+Motor (Pin 12)
+Steering Servo (Pin 11)
+
