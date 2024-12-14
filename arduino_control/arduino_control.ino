@@ -80,12 +80,16 @@ void loop() {
 
     // adjust movement speed based on distance from center
     if (xDiff > 130 || yDiff > 100) {
+      // object is far away
       moveSpeed = 3;
     } else if (xDiff > 100 || yDiff > 80) {
+      // object is close
       moveSpeed = 1;
     }
     
     // adjust servos based on object position
+    // frame is divided into thirds, with the center third being the target area
+    // X axis: left, center, right
     if (x < frameWidth / 3) {
       // object is left
       panServo.write(panServo.read() + moveSpeed);
@@ -103,6 +107,7 @@ void loop() {
       centerCounter++;
     }
     
+    // Y axis: up, center, down
     if (y < frameHeight / 3) {
       // object is up
       tiltServo.write(tiltServo.read() - moveSpeed);
@@ -118,7 +123,9 @@ void loop() {
       centerCounter++;
     }
 
-    // laser control
+    // laser control is dependent on centerCounter
+    // if object is centered for a certain amount of time, laser is turned on
+    // otherwise, laser is turned off
     if (centerCounter >= centerThreshold) {
       // centered for a while (target locked)
       digitalWrite(laserPin, HIGH);
@@ -127,7 +134,10 @@ void loop() {
       digitalWrite(laserPin, LOW);
     }
 
-    // motor control
+    // motor control is dependent on blockWidth
+    // if object is far away, motor is set to max speed
+    // if object is close, motor is set to medium speed
+    // if object is very close, motor is turned off
     if (blockWidth < (0.1 * frameWidth)) {
       // object is far away
       analogWrite(motorPin, 70);
